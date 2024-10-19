@@ -19,41 +19,46 @@
 
         body {
             font-family: 'Playfair Display', serif;
-            background-color: #f5f5f5;
+            background-color: #f0f4f8;
             color: #333;
             line-height: 1.7;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         .container {
             width: 90%;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 20px 0;
         }
 
         header {
-            background: linear-gradient(135deg, #ff5e62, #ff9966);
+            background: linear-gradient(135deg, #4e54c8, #8f94fb), url('path/to/parallax-image.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: #fff;
-            padding: 20px 0;
+            padding: 100px 0;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            position: relative;
+            background-attachment: fixed;
         }
 
         header h1 {
-            font-size: 2.8em;
+            font-size: 3em;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-in-out;
         }
 
         header p {
             margin: 5px 0;
             font-weight: 500;
+            animation: fadeInUp 1s ease-in-out;
         }
 
         header a {
-            color: #ffeaa7;
+            color: #bbdefb;
             text-decoration: none;
             font-weight: 600;
         }
@@ -62,7 +67,7 @@
             text-decoration: underline;
         }
 
-        /* New CSS for the image */
+        /* Profile Image */
         .profile-image {
             border-radius: 50%;
             width: 150px;
@@ -72,6 +77,35 @@
             display: block;
             border: 5px solid #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        nav {
+            background-color: transparent;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav ul li {
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
         }
 
         section {
@@ -90,9 +124,9 @@
 
         section h2 {
             font-size: 2em;
-            color: #ff5e62;
+            color: #01395e;
             margin-bottom: 15px;
-            border-bottom: 2px solid #ff9966;
+            border-bottom: 2px solid #4285b4;
             padding-bottom: 10px;
             display: inline-block;
         }
@@ -108,35 +142,46 @@
             margin-bottom: 10px;
         }
 
-        .experience .job {
-            margin-bottom: 20px;
-        }
-
-        .experience .job h3 {
-            font-size: 1.5em;
-            margin-bottom: 5px;
-            color: #ff9966;
-            font-weight: 600;
-        }
-
-        .experience .job span {
-            display: block;
-            font-size: 0.9em;
-            color: #aaa;
-            margin-bottom: 10px;
-        }
-
         footer {
-            background-color: #ff5e62;
-            color: #fff;
+            background-color: transparent;
+            color: black;
             text-align: center;
-            padding: 10px 0;
             font-size: 0.9em;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
             bottom: 0;
             left: 0;
             width: 100%;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        .contact-form button {
+            background-color: #4e54c8;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #8f94fb;
         }
 
         @media (max-width: 768px) {
@@ -152,6 +197,22 @@
                 font-size: 1.5em;
             }
         }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -160,36 +221,58 @@
 <body>
     <header>
         <div class="container">
-            <!-- Add the image here -->
-            <img src="Q10983.jpg"alt="Deepak Kailas Shinde" class="profile-image">
+            <img src="Q10983.jpg" alt="Deepak Kailas Shinde" class="profile-image">
             <h1>Deepak Kailas Shinde</h1>
             <p><a href="https://www.linkedin.com/in/deepak-shinde-8994431aa/" target="_blank" rel="noopener">LinkedIn Profile</a></p>
-            <p>Email: <a href="mailto:deepak.shinde199914@gmail.com">deepak.shinde199914@gmail.com</a> | Phone: 8007329752</p>
+            <p>Email: <a href="mailto:deepak.shinde199914@gmail.com">deepak.shinde199914@gmail.com</a> | Phone: +91 8007329752</p>
             <p>Ulhasnagar, Maharashtra, India</p>
         </div>
     </header>
 
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#objective">Objective</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#languages">Languages</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <section class="intro">
+        <section class="intro" id="objective">
             <h2>Objective</h2>
-            <p>Seeking a challenging position as a Software Developer where I can leverage my two years of experience in performance engineering to contribute effectively to the development and optimization of high-quality software solutions. Passionate about utilizing my technical skills and knowledge to drive efficiency, enhance user experience, and deliver innovative solutions in a collaborative team environment.</p>
+            <p>
+                Innovative and results-driven Software Developer with over two years of experience specializing in MERN stack development
+                and performance engineering. Proficient in designing and optimizing high-performance web applications using React.js,
+                Node.js, MongoDB, and Express.js. Demonstrated success in reducing load times, improving scalability, and driving efficiencies
+                in collaborative environments. Strong expertise in building secure, scalable, and responsive applications, along with experience
+                in CI/CD pipelines and cloud deployments (AWS, Azure). Passionate about developing seamless user experiences and
+                optimizing backend processes.
+            </p>
         </section>
 
-        <section class="skills">
+        <section class="skills" id="skills">
             <h2>Skills</h2>
             <ul>
-                <li>Programming languages: C, C++, Java, Python, Nodejs, JavaScript, PHP, Go</li>
-                <li>Software Development and Code Optimization</li>
-                <li>Log, Heap, and Thread Analysis, Management and Troubleshooting</li>
-                <li>Application Performance Monitoring and Engineering</li>
-                <li>Data Query, Indexing, Visualization, and Monitoring</li>
-                <li>Unix/Linux System Internal</li>
-                <li>Cloud: AWS, Azure</li>
-                <li>ELK Stack, Dynatrace, AppDynamics</li>
+                <li>Programming Languages: JavaScript (ES6+), TypeScript, Java, Python</li>
+                <li>Front-End Technologies: React.js, Next.js, Redux, HTML5, CSS3, Tailwind CSS, Bootstrap</li>
+                <li>Back-End Technologies: Node.js, Express.js, REST APIs, OAuth</li>
+                <li>Database Systems: MongoDB, MS-SQL Server, Sequelize, Mongoose</li>
+                <li>Version Control & CI/CD: Git, GitHub, GitLab, Jenkins</li>
+                <li>Testing Frameworks: Jest, Cypress, playwright</li>
+                <li>Performance Engineering: JMeter, LoadRunner ELK Stack, Dynatrace, AppDynamics</li>
+                <li>Cloud & DevOps: AWS, AZURE, Docker, Kubernetes</li>
+                <li>Build Tools: Webpack, Babel</li>
+                <li>System Monitoring & Analysis: Prometheus, Grafana, Datadog</li>
             </ul>
         </section>
 
-        <section class="education">
+        <section class="education" id="education">
             <h2>Education</h2>
             <ul>
                 <li><strong>Ulhas Vidyalaya School</strong> - 2015 — 84%</li>
@@ -198,44 +281,37 @@
             </ul>
         </section>
 
-        <section class="experience">
+        <section class="experience" id="experience">
             <h2>Experience</h2>
             <div class="job">
                 <h3>Performance Engineer at Equitas Small Finance Bank, QualityKiosk Technologies Pvt Ltd</h3>
                 <span>Oct 2022 - Present</span>
                 <ul>
-                    <li>Collaborated in the performance testing and tuning of web applications, identifying and addressing performance bottlenecks.</li>
-                    <li>Utilized tools like JMeter and Gatling to simulate high traffic scenarios, ensuring application scalability.</li>
-                    <li>Conducted profiling and code reviews to optimize application code and database queries.</li>
-                    <li>Provided recommendations for system architecture enhancements to improve overall performance.</li>
-                    <li>Implemented and maintained performance monitoring tools to track system performance in real-time.</li>
-                    <li>Developed automation scripts to streamline performance testing and integrate with CI/CD pipelines.</li>
-                    <li>Analyzed performance test results to identify issues and provide detailed reports with recommendations.</li>
-                    <li>Worked closely with development, QA, and operations teams to ensure performance considerations are integrated into the software lifecycle.</li>
-                    <li>Supported performance-related issue resolution in production environments, conducting root cause analysis.</li>
-                    <li>Stayed updated with industry trends and best practices, experimenting with new tools for performance optimization.</li>
+                    <li>Optimized web application performance, reducing load times by 30% through advanced profiling, query optimization, and efficient API handling.</li>
+                    <li>Simulated high-traffic scenarios using JMeter and Gatling, resulting in a 20% increase in system scalability and stability for high-traffic applications.</li>
+                    <li>Integrated real-time monitoring using ELK Stack and Dynatrace, cutting incident response times by 40% and improving overall system reliability.</li>
+                    <li>Automated performance testing with integration into CI/CD pipelines, reducing manual testing time by 25% and streamlining development workflows.</li>
+                    <li>Collaborated closely with developers to integrate performance improvements, reducing post-deployment issues by 10% and improving code quality</li>
                 </ul>
             </div>
         </section>
 
-        <section class="projects">
+        <section class="projects" id="projects">
             <h2>Projects</h2>
             <div class="project">
                 <h3>The Wedding Knots Photography - Freelancer</h3>
                 <p>The Wedding Knots Photography E-commerce Platform is a comprehensive solution designed to facilitate the booking and management of photography services for weddings.</p>
                 <ul>
-                    <li>Frontend: React JS, HTML, CSS, Bootstrap</li>
-                    <li>Backend: Node JS, Express JS, Sequelize</li>
-                    <li>Database: MS-SQL Server</li>
-                    <li>Authentication: JWT</li>
-                    <li>API: RESTful</li>
-                    <li>Build Tools: Webpack, Babel</li>
-                    <li>Development Environment: Visual Studio</li>
+                    <li>Developed an official website for the wedding knots photography business using React.js (front-end) and Node.js (back-end), increasing user engagement by 50%.</li>
+                    <li>Built a secure backend with Node.js and Express.js, optimizing server-side functionality and enabling seamless API integrations. Integrated OAuth-based authentication for secure user access, resulting in enhanced data security and user management capabilities.</li>
+                    <li>Designed and implemented a responsive UI using HTML, CSS, Bootstrap, and Tailwind CSS, improving user accessibility and experience on mobile and web platforms.</li>
+                    <li>Leveraged Webpack and Babel for optimized build processes, reducing application load times by 15%.</li>
+                    <li>Documented and maintained project structure on GitHub, implementing code version control to streamline collaboration.</li>
                 </ul>
             </div>
         </section>
 
-        <section class="languages">
+        <section class="languages" id="languages">
             <h2>Languages</h2>
             <ul>
                 <li>English</li>
@@ -244,15 +320,14 @@
             </ul>
         </section>
 
-        <section class="tools">
-            <h2>Tools & Technologies</h2>
-            <ul>
-                <li>Git, Jenkins, JMeter</li>
-                <li>Docker & Kubernetes</li>
-                <li>Ansible</li>
-                <li>ELK Stack, Dynatrace, AppDynamics, Prometheus, Grafana, Datadog</li>
-                <li>AWS, Azure</li>
-            </ul>
+        <section class="contact" id="contact">
+            <h2>Contact Me</h2>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </section>
     </div>
 
